@@ -1,3 +1,0 @@
-Fixed Bugs
--refactored comments and names for clarity
--added minimum speed limit on bowl to improve gameplay
