@@ -5,8 +5,9 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public bool inPlay = false;
+    public bool canLaunch = true;
 
-    private float spin = 0;
+    private float spin = 0f;
     private Vector3 startPos;
     private Quaternion startRot;
 
@@ -71,6 +72,7 @@ public class Ball : MonoBehaviour
     public void Reset()
     {
         inPlay = false;
+        canLaunch = false;
 
         // Return ball to starting position
         transform.position = startPos;
@@ -92,4 +94,7 @@ public class Ball : MonoBehaviour
         rigidBody.angularVelocity = oldAngularVelocity + new Vector3(0, 0, spin);
         spin = spin * 0.95f;        // Spin amount degrades over time
     }
+
+    // Sets canLaunch to true
+    public void SetCanLaunch()    { canLaunch = true; }
 }

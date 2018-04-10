@@ -7,6 +7,8 @@ public class PinSetter : MonoBehaviour
     public GameObject pinSet;
     public GameEnd gameEnd;
 
+    public Ball ball;
+
     private float distanceToRaise = 40.0f;
     private float pinLaneDistance = 1829.0f;
 
@@ -16,6 +18,7 @@ public class PinSetter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ball = GameObject.FindObjectOfType<Ball>();
         animator = GetComponent<Animator>();
         pinCounter = GameObject.FindObjectOfType<PinCounter>();
         gameEnd = GameObject.FindObjectOfType<GameEnd>();
@@ -92,4 +95,7 @@ public class PinSetter : MonoBehaviour
             gameEnd.EndGame();
         }
     }
+
+    // Animation finish resets ball.canLaunch to true
+    public void CanLaunch()     { ball.SetCanLaunch(); }
 }

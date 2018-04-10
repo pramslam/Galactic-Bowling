@@ -35,7 +35,7 @@ public class BallDragLaunch : MonoBehaviour
     #region LaunchInput
     public void DragStart()
     {
-        if (ball.inPlay == false)           // Prevents dragging if ball is in play
+        if (ball.inPlay == false && ball.canLaunch == true)           // Prevents dragging if ball is in play
         {
             dragLaunch = true;
 
@@ -47,7 +47,7 @@ public class BallDragLaunch : MonoBehaviour
 
     public void DragEnd()
     {
-        if (ball.inPlay == false)           // Prevents dragging if ball is in play
+        if (ball.inPlay == false && ball.canLaunch == true)           // Prevents dragging if ball is in play
         {
             ball.inPlay = true;
 
