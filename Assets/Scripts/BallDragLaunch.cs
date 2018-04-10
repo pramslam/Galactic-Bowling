@@ -110,23 +110,32 @@ public class BallDragLaunch : MonoBehaviour
     #region Debug
     public void StrikeLaunch()
     {
-        ball.inPlay = true;
-        dragLaunch = false;
-        ball.Launch(new Vector3(10, 0, 2000));
+        if (ball.inPlay == false && ball.canLaunch == true)
+        {
+            ball.inPlay = true;
+            dragLaunch = false;
+            ball.Launch(new Vector3(10, 0, 2000));
+        }
     }
 
     public void SpareLaunch()
     {
-        ball.inPlay = true;
-        dragLaunch = false;
-        ball.Launch(new Vector3(5, 0, 2000));
+        if (ball.inPlay == false && ball.canLaunch == true)
+        {
+            ball.inPlay = true;
+            dragLaunch = false;
+            ball.Launch(new Vector3(5, 0, 2000));
+        }
     }
 
     public void SparePickupLaunch()
     {
-        ball.inPlay = true;
-        dragLaunch = false;
-        ball.Launch(new Vector3(-40, 0, 2000));
+        if (ball.inPlay == false && ball.canLaunch == true)
+        {
+            ball.inPlay = true;
+            dragLaunch = false;
+            ball.Launch(new Vector3(-40, 0, 2000));
+        }
     }
     #endregion
 }
