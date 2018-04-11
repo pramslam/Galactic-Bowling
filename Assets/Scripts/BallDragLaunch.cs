@@ -6,6 +6,7 @@ using UnityEngine;
 public class BallDragLaunch : MonoBehaviour
 {
     private bool dragLaunch = true;
+    private float nudgeAmount = 0f;
     private float nudgeLimit = 45f;
     private float minLaunchSpeed = 1400f;
     private float startTime, endTime;
@@ -19,6 +20,16 @@ public class BallDragLaunch : MonoBehaviour
         ball = GetComponent<Ball>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        // Sets nudge amount, repeats if held
+        if (nudgeAmount != 0)
+        {
+            NudgeAtStart(nudgeAmount);
+        }
+    }
+
     // Allows setting ball position at start
     public void NudgeAtStart(float amount)
     {
@@ -30,6 +41,9 @@ public class BallDragLaunch : MonoBehaviour
             ball.transform.position = new Vector3(xPos, yPos, zPos);
         }
     }
+
+    // Set nudgeAmount to current amount
+    public void SetNudgeAmount(float amount) { nudgeAmount = amount; }
 
     // Handles launch input
     #region LaunchInput
