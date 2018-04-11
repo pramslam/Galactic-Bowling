@@ -7,12 +7,11 @@ public class PinSetter : MonoBehaviour
     public GameObject pinSet;
     public GameEnd gameEnd;
 
-    public Ball ball;
-
     private float distanceToRaise = 40.0f;
     private float pinLaneDistance = 1829.0f;
 
     private Animator animator;
+    private Ball ball;
     private PinCounter pinCounter;
 
     // Use this for initialization
@@ -22,12 +21,6 @@ public class PinSetter : MonoBehaviour
         animator = GetComponent<Animator>();
         pinCounter = GameObject.FindObjectOfType<PinCounter>();
         gameEnd = GameObject.FindObjectOfType<GameEnd>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     // Sets pin collision to continuous dynamic when ball enters pin setter box collider
@@ -44,6 +37,8 @@ public class PinSetter : MonoBehaviour
         }
     }
 
+    // Handles pin interface
+    #region PinInterface
     // Raise pins
     public void RaisePins()
     {
@@ -71,6 +66,12 @@ public class PinSetter : MonoBehaviour
             pin.RenewNewPin();
         }
     }
+    #endregion
+
+    // Handles animation triggers
+    #region AnimationTriggers
+    // Animation event prevents ball launch before pins have set
+    public void CanLaunch() { ball.SetCanLaunch(); }
 
     // Process animation triggers
     public void ProcessAction(ActionMaster.Action action)
@@ -95,7 +96,5 @@ public class PinSetter : MonoBehaviour
             gameEnd.EndGame();
         }
     }
-
-    // Animation finish resets ball.canLaunch to true
-    public void CanLaunch()     { ball.SetCanLaunch(); }
+    #endregion
 }

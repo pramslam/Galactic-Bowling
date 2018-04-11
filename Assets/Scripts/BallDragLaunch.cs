@@ -30,20 +30,20 @@ public class BallDragLaunch : MonoBehaviour
         }
     }
 
+    // Set nudgeAmount to current amount
+    public void SetNudgeAmount(float amount) { nudgeAmount = amount; }
+
     // Allows setting ball position at start
-    public void NudgeAtStart(float amount)
+    void NudgeAtStart(float amount)
     {
         if (ball.inPlay == false)           // Prevents nudge if ball is in play
         {
-            float xPos = Mathf.Clamp(ball.transform.position.x + amount, -nudgeLimit, nudgeLimit);
+            float xPos = Mathf.Clamp(ball.transform.position.x + amount, -nudgeLimit, nudgeLimit);          // Prevents ball from starting off lane
             float yPos = ball.transform.position.y;
             float zPos = ball.transform.position.z;
             ball.transform.position = new Vector3(xPos, yPos, zPos);
         }
     }
-
-    // Set nudgeAmount to current amount
-    public void SetNudgeAmount(float amount) { nudgeAmount = amount; }
 
     // Handles launch input
     #region LaunchInput
@@ -121,7 +121,7 @@ public class BallDragLaunch : MonoBehaviour
     #endregion
 
     // Debug Inputs
-    #region Debug
+    #region DebugInput
     public void StrikeLaunch()
     {
         if (ball.inPlay == false && ball.canLaunch == true)
@@ -148,7 +148,7 @@ public class BallDragLaunch : MonoBehaviour
         {
             ball.inPlay = true;
             dragLaunch = false;
-            ball.Launch(new Vector3(-40, 0, 2000));
+            ball.Launch(new Vector3(-30, 0, 2000));
         }
     }
     #endregion

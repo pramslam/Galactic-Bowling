@@ -341,7 +341,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 297375199}
-        m_MethodName: ToggleDebug
+        m_MethodName: ToggleDebugMenu
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 283660291}
@@ -1552,7 +1552,9 @@ MonoBehaviour:
     Direction and Speed matters!
 
 
-    3. Swipe Left or Right to spin ball after throw.
+    3. Swipe Left or Right after throw,
+
+    adds spin to the ball!
 
 
     4. Normal Bowling Scoring!'
@@ -3068,7 +3070,7 @@ GameObject:
   - component: {fileID: 728336907}
   - component: {fileID: 728336906}
   m_Layer: 5
-  m_Name: Debug Panel REMOVE
+  m_Name: Debug Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

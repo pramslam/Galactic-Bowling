@@ -14,12 +14,6 @@ public class Pin : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Determines if pin is standing, accounts for pin wobbling
     public bool IsStanding()
     {

@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
         gameEnd = GameObject.FindObjectOfType<GameEnd>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Processes scoring
     public void Bowl(int pinFall)
     {
@@ -51,9 +45,9 @@ public class GameManager : MonoBehaviour
     public void TotalScore()
     {
         int count = totalScore.Count;
-        if (count != 0)                 // Required or savedRolls could equal -1
+        if (count != 0)                                 // Required or savedRolls could equal -1
         {
-            int cumulative = this.totalScore[count - 1];
+            int cumulative = totalScore[count - 1];
             gameEnd.UpdateScore(cumulative);
         }
     }

@@ -6,17 +6,17 @@ public class UIManager : MonoBehaviour {
 
     public void DisableBoolAnimator(Animator animator)
     {
-        animator.SetBool("IsDisplayed", false);
+        animator.SetBool("DebugIsDisplayed", false);
     }
 
     public void EnableBoolAnimator(Animator animator)
     {
-        animator.SetBool("IsDisplayed", true);
+        animator.SetBool("DebugIsDisplayed", true);
     }
 
-    public void ToggleDebug(Animator animator)
+    public void ToggleDebugMenu(Animator animator)
     {
-        if (animator.GetBool("IsDisplayed") == true)
+        if (animator.GetBool("DebugIsDisplayed") == true)
         {
             DisableBoolAnimator(animator);
         }

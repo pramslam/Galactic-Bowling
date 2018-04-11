@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     public bool canLaunch = true;
 
     private float spin = 0f;
+    private float minSpin = -2f;
+    private float maxSpin = 2f;
     private Vector3 startPos;
     private Quaternion startRot;
 
@@ -52,6 +54,9 @@ public class Ball : MonoBehaviour
         pinCounter.SetBallOutOfPlay();
     }
 
+    // Sets canLaunch to true
+    public void SetCanLaunch() { canLaunch = true; }
+
     // Check if ball is moving
     public bool IsMoving()
     {
@@ -89,12 +94,9 @@ public class Ball : MonoBehaviour
     // Adds spin to ball
     public void AddSpin(float totalSpin)
     {
-        spin = Mathf.Clamp(totalSpin, -1, 1);
+        spin = Mathf.Clamp(totalSpin, minSpin, maxSpin);
         Vector3 oldAngularVelocity = rigidBody.angularVelocity;
         rigidBody.angularVelocity = oldAngularVelocity + new Vector3(0, 0, spin);
         spin = spin * 0.95f;        // Spin amount degrades over time
     }
-
-    // Sets canLaunch to true
-    public void SetCanLaunch()    { canLaunch = true; }
 }
