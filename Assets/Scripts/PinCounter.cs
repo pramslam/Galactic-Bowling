@@ -68,7 +68,7 @@ public class PinCounter : MonoBehaviour
         // Wait for initial count and play audio once
         if ((Time.time - lastChangeTime) > audioManager.GetAudioTimer() && audioManager.GetAudioPlayed() == false)
         {
-            audioManager.ProcessAudio(lastStandingCount, CountStanding());
+            audioManager.PlayAudio(audioManager.ProcessAudio(lastSettledCount, CountStanding()));
         }
 
         // Waits for pins to settle before resetting

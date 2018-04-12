@@ -138,16 +138,6 @@ public class BallDragLaunch : MonoBehaviour
         {
             ball.inPlay = true;
             dragLaunch = false;
-            ball.Launch(new Vector3(5, 0, 2000));
-        }
-    }
-
-    public void SparePickupLaunch()
-    {
-        if (ball.inPlay == false && ball.canLaunch == true)
-        {
-            ball.inPlay = true;
-            dragLaunch = false;
             ball.Launch(new Vector3(-30, 0, 2000));
         }
     }
