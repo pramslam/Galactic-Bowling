@@ -7,14 +7,6 @@ using System.Linq;
 [TestFixture]
 public class ScoreMasterTest{
 
-    /*
-    [SetUp]
-    public void Setup()
-    {
-        pinFalls = new List<int>();
-    }
-    */
-
     [Test]
     public void T00PassingTest()
     {

@@ -5,14 +5,14 @@ using UnityEngine;
 public class PinSetter : MonoBehaviour
 {
     public GameObject pinSet;
-    public GameEnd gameEnd;
-
+    
     private float distanceToRaise = 40.0f;
     private float pinLaneDistance = 1829.0f;
 
     private Animator animator;
     private Ball ball;
     private PinCounter pinCounter;
+    private GameEnd gameEnd;
 
     // Use this for initialization
     void Start()
