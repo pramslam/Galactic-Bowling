@@ -5,19 +5,19 @@ using UnityEngine;
 using System.Linq;
 
 [TestFixture]
-public class SoundTest
+public class AudioManagerTest
 {
     private int lastStanding, standing;
-    private PinCounter pinCounter;
+    private AudioManager audioManager;
 
-    private PinCounter.Sound strike = PinCounter.Sound.Strike;
-    private PinCounter.Sound spare = PinCounter.Sound.Spare;
-    private PinCounter.Sound gutter = PinCounter.Sound.Gutter;
+    private AudioManager.Sound strike = AudioManager.Sound.Strike;
+    private AudioManager.Sound spare = AudioManager.Sound.Spare;
+    private AudioManager.Sound gutter = AudioManager.Sound.Gutter;
 
     [SetUp]
     public void Setup()
     {
-        pinCounter = GameObject.FindObjectOfType<PinCounter>();
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     [Test]
@@ -32,7 +32,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 10;
 
-        Assert.AreEqual(gutter, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(gutter, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -41,7 +41,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 0;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -50,7 +50,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 9;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -59,7 +59,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 7;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -68,7 +68,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 6;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -77,7 +77,7 @@ public class SoundTest
         lastStanding = 10;
         standing = 6;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -86,7 +86,7 @@ public class SoundTest
         lastStanding = 9;
         standing = 8;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -95,7 +95,7 @@ public class SoundTest
         lastStanding = 9;
         standing = 6;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -104,7 +104,7 @@ public class SoundTest
         lastStanding = 9;
         standing = 5;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -113,7 +113,7 @@ public class SoundTest
         lastStanding = 9;
         standing = 1;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -122,7 +122,7 @@ public class SoundTest
         lastStanding = 9;
         standing = 0;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -131,7 +131,7 @@ public class SoundTest
         lastStanding = 6;
         standing = 6;
 
-        Assert.AreEqual(gutter, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(gutter, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -140,7 +140,7 @@ public class SoundTest
         lastStanding = 6;
         standing = 3;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -149,7 +149,7 @@ public class SoundTest
         lastStanding = 6;
         standing = 2;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -158,7 +158,7 @@ public class SoundTest
         lastStanding = 6;
         standing = 0;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -167,7 +167,7 @@ public class SoundTest
         lastStanding = 5;
         standing = 0;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -176,7 +176,7 @@ public class SoundTest
         lastStanding = 5;
         standing = 1;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -185,7 +185,7 @@ public class SoundTest
         lastStanding = 5;
         standing = 2;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -194,7 +194,7 @@ public class SoundTest
         lastStanding = 5;
         standing = 3;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -203,7 +203,7 @@ public class SoundTest
         lastStanding = 4;
         standing = 0;
 
-        Assert.AreEqual(strike, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(strike, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -212,7 +212,7 @@ public class SoundTest
         lastStanding = 4;
         standing = 1;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -221,7 +221,7 @@ public class SoundTest
         lastStanding = 4;
         standing = 3;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -230,7 +230,7 @@ public class SoundTest
         lastStanding = 3;
         standing = 0;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -239,7 +239,7 @@ public class SoundTest
         lastStanding = 3;
         standing = 1;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -248,7 +248,7 @@ public class SoundTest
         lastStanding = 3;
         standing = 3;
 
-        Assert.AreEqual(gutter, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(gutter, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -257,7 +257,7 @@ public class SoundTest
         lastStanding = 2;
         standing = 0;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -266,7 +266,7 @@ public class SoundTest
         lastStanding = 1;
         standing = 0;
 
-        Assert.AreEqual(spare, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(spare, audioManager.ProcessAudio(lastStanding, standing));
     }
 
     [Test]
@@ -275,6 +275,6 @@ public class SoundTest
         lastStanding = 1;
         standing = 1;
 
-        Assert.AreEqual(gutter, pinCounter.ProcessAudio(lastStanding, standing));
+        Assert.AreEqual(gutter, audioManager.ProcessAudio(lastStanding, standing));
     }
 }

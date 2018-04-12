@@ -5,30 +5,21 @@ using UnityEngine.UI;
 
 public class PinCounter : MonoBehaviour
 {
-    public enum Sound { Strike, Spare, Gutter, Undefined };
-
     public Text standingDisplay;
 
-    private bool audioPlayed = false;
     private bool ballOutOfPlay = false;
-    private int audioLimit = 3;
-    private int lastStandingCount = -1;         // -1 indicates pins have settled
+    private int lastStandingCount = -1;             // -1 indicates pins have settled
     private int lastSettledCount = 10;
-    private float audioTime = 0.2f;
     private float lastChangeTime = 0.0f;
     private float pinSettleTime = 3.0f;
 
-    private AudioSource[] audioSource;
-    private AudioSource spareAudio;
-    private AudioSource strikeAudio;
+    private AudioManager audioManager;
     private GameManager gameManager;
 
     // Use this for initialization
     void Start()
     {
-        audioSource = GetComponents<AudioSource>();
-        spareAudio = audioSource[0];
-        strikeAudio = audioSource[1];
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -55,53 +46,6 @@ public class PinCounter : MonoBehaviour
         }
     }
 
-    // Plays audio depending on number of pins that fall
-    public Sound ProcessAudio(int lastStanding, int standing)
-    {
-        Sound nextSound = Sound.Undefined;
-        audioPlayed = true;
-
-        // Play audio
-        if (standing == lastStanding)                                 // No pins hit
-        {
-            nextSound = Sound.Gutter;
-        }
-        else if (standing == 0 && lastStanding > audioLimit)          // Special case, spare larger than limit
-        {
-            nextSound = Sound.Strike;
-            PlayAudio(Sound.Strike);
-        }
-        else if (lastStanding - standing > audioLimit)                // Hit more than limit
-        {
-            nextSound = Sound.Strike;
-            PlayAudio(Sound.Strike);
-        }
-        else if (lastStanding - standing <= audioLimit)               // Hit limit or less
-        {
-            nextSound = Sound.Spare;
-            PlayAudio(Sound.Spare);
-        }
-        return nextSound;
-    }
-
-    // Plays audio
-    public void PlayAudio(Sound audio)
-    {
-        switch (audio)
-        {
-            case Sound.Gutter:
-                break;
-            case Sound.Spare:
-                //spareAudio.Play();
-                break;
-            case Sound.Strike:
-                //strikeAudio.Play();
-                break;
-            case Sound.Undefined:
-                break;
-        }
-    }
-
     // Used by ball to set out of play
     public void SetBallOutOfPlay() { ballOutOfPlay = true; }
 
@@ -122,9 +66,9 @@ public class PinCounter : MonoBehaviour
         }
 
         // Wait for initial count and play audio once
-        if ((Time.time - lastChangeTime) > audioTime && audioPlayed == false)
+        if ((Time.time - lastChangeTime) > audioManager.GetAudioTimer() && audioManager.GetAudioPlayed() == false)
         {
-            ProcessAudio(lastStandingCount, CountStanding());
+            audioManager.ProcessAudio(lastStandingCount, CountStanding());
         }
 
         // Waits for pins to settle before resetting
@@ -157,10 +101,9 @@ public class PinCounter : MonoBehaviour
         int pinFall = lastSettledCount - standing;
         lastSettledCount = standing;
 
-        // Reset audio
-        audioPlayed = false;
+        audioManager.ResetAudio();                  // Reset audio
 
-        gameManager.Bowl(pinFall);              // Pass data to GameManager
+        gameManager.Bowl(pinFall);                  // Pass data to GameManager
 
         lastStandingCount = -1;
         ballOutOfPlay = false;
